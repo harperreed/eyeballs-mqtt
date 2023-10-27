@@ -19,4 +19,4 @@ COPY . .
 # ENV BROKER_ADDRESS your-broker-address
 
 # Command to run the app
-CMD ["npm", "run start"]
+CMD ["npm", "start"]
