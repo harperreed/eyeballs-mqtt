@@ -1,9 +1,8 @@
-# Eyeballs Replicate AI API MQTT
+# Eyeballs - LLaVA (Replicate AI) MQTT API
 
 This project is a Node.js application that listens for MQTT messages containing either a base64 encoded image or an image URL. It then processes the image using the Replicate API and publishes the result back to another MQTT topic.
 
-Meant to be used with the LLava 1.5 model
-
+Meant to be used with the [🌋 LLaVA: Large Language and Vision Assistant](https://github.com/haotian-liu/LLaVA#-llava-large-language-and-vision-assistant) hosted at [replicate](https://replicate.com/yorickvp/llava-13b). Could be *easily* repurposed for other use cases and models.
 
 ## Features
 
@@ -67,3 +66,8 @@ Publish a message to the topic specified in `TOPIC` with the following JSON payl
 ```
 
 Check the published message in `OUTPUT_TOPIC` and the Winston logs for results and timing info.
+
+## TODO
+
+- use replicate docker to locally host the models
+- add tests (lol. who am i kidding)
