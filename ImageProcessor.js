@@ -30,7 +30,7 @@ class ImageProcessor extends EventEmitter {
 
     async processImage(imageData, prompt) {
         const hash = crypto.createHash("sha256");
-        hash.update(`${imageData}_${prompt}`);
+        hash.update(`${imageData}s_${prompt}`);
         const cacheKey = hash.digest("hex");
         this.emit("receipt", cacheKey);
 
@@ -61,6 +61,7 @@ class ImageProcessor extends EventEmitter {
         try {
             const response = await this.openai.chat.completions.create({
                 model: this.model,
+                response_format: { type: "json_object" },
                 messages: [
                     {
                         role: "user",
@@ -80,7 +81,9 @@ class ImageProcessor extends EventEmitter {
             const endTime = Date.now();
             const elapsedTime = (endTime - startTime) / 1000;
 
-            const outputString = response.choices[0].message.content;
+            const outputString = JSON.parse(
+                response.choices[0].message.content,
+            );
             const outputPayload = {
                 result: outputString,
                 elapsedTime,
