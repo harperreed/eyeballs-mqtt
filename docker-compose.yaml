@@ -1,12 +1,12 @@
-version: '3'
+version: "3"
 services:
-  app:
-    build: .
-    environment:
-      - REPLICATE_API_TOKEN=${REPLICATE_API_TOKEN}
-      - TOPIC=${TOPIC}
-      - BROKER_ADDRESS=${BROKER_ADDRESS}
-      - MODEL=${MODEL}
-      - OUTPUT_TOPIC=${OUTPUT_TOPIC}
-    volumes:
-      - ./logs:/usr/src/app/logs  # For winston logs
+    app:
+        build: .
+        environment:
+            - OPENAI_API_KEY=${OPENAI_API_KEY}
+            - TOPIC=${TOPIC}
+            - BROKER_ADDRESS=${BROKER_ADDRESS}
+            - MODEL=${MODEL}
+            - OUTPUT_TOPIC=${OUTPUT_TOPIC}
+        volumes:
+            - ./logs:/usr/src/app/logs # For winston logs
